@@ -28,14 +28,6 @@ const authRoutes = require('./routes/auth');
 app.use('/api/tasks', taskRoutes);
 app.use('/api/auth', authRoutes);
 
-// Serveur statique React en production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client-front/build')));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client-front/build', 'index.html'));
-  });
-}
 
 // Lancer le serveur
 const PORT = process.env.PORT || 5000;
